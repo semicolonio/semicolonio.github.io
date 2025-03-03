@@ -1,1 +1,632 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey.ai - AI Revenue Accelerator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #2D3142;
+            --secondary-color: #4F5D75;
+            --accent-color: #5C80BC;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary-color);
+            overflow-x: hidden;
+        }
+
+        /* Responsive Typography */
+        h1.display-4 {
+            font-size: calc(1.8rem + 2.1vw);
+            line-height: 1.2;
+        }
+
+        .lead {
+            font-size: calc(1rem + 0.3vw);
+        }
+
+        /* Improved Navigation */
+        .navbar {
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: white;
+                padding: 1rem;
+                border-radius: 8px;
+                margin-top: 0.5rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+        }
+        
+        /* Hero Section Improvements */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: calc(2rem + 5vw) 0;
+            margin-top: 76px;
+        }
+
+        @media (max-width: 991.98px) {
+            .hero {
+                text-align: center;
+                padding: calc(1rem + 5vw) 0;
+            }
+
+            .hero .btn-group {
+                justify-content: center;
+            }
+
+            .hero img {
+                margin-top: 2rem;
+                max-width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        
+        /* Responsive Section Padding */
+        .section-padding {
+            padding: calc(2rem + 3vw) 0;
+        }
+        
+        /* Enhanced Cards */
+        .feature-card {
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Improved Pricing Cards */
+        .pricing-card {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            height: 100%;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 991.98px) {
+            .pricing-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Enhanced Form */
+        .cta-form {
+            background: var(--light-bg);
+            border-radius: 10px;
+            padding: calc(1.5rem + 1vw);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-control, .form-select {
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border-radius: 8px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 0.25rem rgba(92,128,188,0.25);
+            border-color: var(--accent-color);
+        }
+        
+        /* Enhanced Buttons */
+        .btn-primary {
+            background-color: var(--accent-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #4a6da3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(92,128,188,0.3);
+        }
+
+        .btn-outline-secondary {
+            border-radius: 8px;
+        }
+        
+        /* Enhanced Badge */
+        .guarantee-badge {
+            background: #28a745;
+            color: white;
+            padding: 0.625rem 1.25rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(40,167,69,0.2);
+        }
+
+        /* Responsive Images */
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 767.98px) {
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* Footer Improvements */
+        @media (max-width: 991.98px) {
+            footer .row > div {
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+            footer .d-flex {
+                justify-content: center;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Gap Utilities */
+        .gap-1 { gap: 0.25rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 1rem; }
+        .gap-4 { gap: 1.5rem; }
+        .gap-5 { gap: 3rem; }
+
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Journey.ai</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="#book-call">Book Strategy Call</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <span class="guarantee-badge mb-3">3X ROI Guarantee in 90 Days</span>
+                    <h1 class="display-4 fw-bold mb-4">Transform Your Revenue Machine with AI</h1>
+                    <p class="lead mb-4">We implement AI into your go-to-market strategy to unlock trapped revenue, automate workflows, and outperform competitors.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#book-call" class="btn btn-primary btn-lg">Book Free Strategy Call</a>
+                        <a href="#features" class="btn btn-outline-secondary btn-lg">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://placehold.co/600x400" alt="AI Revenue Accelerator" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section-padding bg-light" id="problems">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold mb-4">Your Revenue Team is Drowning in Inefficiency</h2>
+                    <p class="lead text-muted">Your best people waste 40% of their time on tasks AI should be doing.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <img src="https://placehold.co/80" alt="Data Silos" class="mb-3">
+                            </div>
+                            <h5 class="card-title">Data Silos</h5>
+                            <p class="card-text">Valuable data trapped across 10+ systems</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <img src="https://placehold.co/80" alt="Manual Tasks" class="mb-3">
+                            </div>
+                            <h5 class="card-title">Manual Tasks</h5>
+                            <p class="card-text">Teams wasting time on repetitive work</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <img src="https://placehold.co/80" alt="Failed AI" class="mb-3">
+                            </div>
+                            <h5 class="card-title">Failed AI Projects</h5>
+                            <p class="card-text">Previous AI experiments without results</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <img src="https://placehold.co/80" alt="Competition" class="mb-3">
+                            </div>
+                            <h5 class="card-title">Competition Ahead</h5>
+                            <p class="card-text">Competitors already using AI effectively</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section-padding" id="features">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">The AI Revenue Accelerator</h2>
+                    <p class="lead mb-4">We don't just consult. We build and implement an AI system that delivers immediate ROI.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary text-white rounded-circle p-3">1</div>
+                        </div>
+                        <div>
+                            <h4>Analyze</h4>
+                            <p>We scan your entire GTM operation and identify exactly where AI can deliver immediate ROI</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary text-white rounded-circle p-3">2</div>
+                        </div>
+                        <div>
+                            <h4>Build</h4>
+                            <p>We create your AI-Ready Data Platform connecting all your systems</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary text-white rounded-circle p-3">3</div>
+                        </div>
+                        <div>
+                            <h4>Deploy</h4>
+                            <p>We implement AI assistants that let your team "talk to your data" and take action</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary text-white rounded-circle p-3">4</div>
+                        </div>
+                        <div>
+                            <h4>Scale</h4>
+                            <p>We measure results and expand to more workflows for compounding returns</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold mb-4">Real Results for B2B Companies</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <h3 class="display-4 fw-bold text-primary">47%</h3>
+                            <p>Increase in Sales Productivity</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <h3 class="display-4 fw-bold text-primary">35%</h3>
+                            <p>Faster Deal Cycles</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <h3 class="display-4 fw-bold text-primary">63%</h3>
+                            <p>Reduction in Manual Data Entry</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <h3 class="display-4 fw-bold text-primary">2.1x</h3>
+                            <p>More High-Quality Meetings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section-padding" id="pricing">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold mb-4">Choose Your Acceleration Package</h2>
+                    <p class="lead text-muted">All packages include our industry-leading 3X ROI guarantee</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pricing-card h-100 p-4">
+                        <div class="text-center mb-4">
+                            <h3>Starter Accelerator</h3>
+                            <div class="display-4 fw-bold my-3">€24,999</div>
+                            <p class="text-muted">Perfect for teams of 10-25 people</p>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">✓ AI Profit Audit</li>
+                            <li class="mb-2">✓ Core Data Platform</li>
+                            <li class="mb-2">✓ 3 AI Assistant Implementations</li>
+                            <li class="mb-2">✓ 90-Day ROI Measurement</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#book-call" class="btn btn-outline-primary w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card h-100 p-4 border-primary">
+                        <div class="text-center mb-4">
+                            <h3>Growth Accelerator</h3>
+                            <div class="display-4 fw-bold my-3">€49,999</div>
+                            <p class="text-muted">Ideal for teams of 26-50 people</p>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">✓ Comprehensive AI Profit Audit</li>
+                            <li class="mb-2">✓ Advanced Data Platform</li>
+                            <li class="mb-2">✓ 5 AI Assistant Implementations</li>
+                            <li class="mb-2">✓ 6 Months ROI Measurement</li>
+                            <li class="mb-2">✓ Custom Workflow Automation</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#book-call" class="btn btn-primary w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pricing-card h-100 p-4">
+                        <div class="text-center mb-4">
+                            <h3>Enterprise Accelerator</h3>
+                            <div class="display-4 fw-bold my-3">€99,999</div>
+                            <p class="text-muted">Built for teams of 51-200+ people</p>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">✓ Enterprise-Wide AI Profit Audit</li>
+                            <li class="mb-2">✓ Enterprise-Grade Data Platform</li>
+                            <li class="mb-2">✓ Unlimited AI Implementations</li>
+                            <li class="mb-2">✓ 12 Months ROI Measurement</li>
+                            <li class="mb-2">✓ Dedicated AI Strategy Consultant</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#book-call" class="btn btn-outline-primary w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-light" id="book-call">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold mb-4">Book Your Free AI Revenue Strategy Call</h2>
+                        <p class="lead">Get a personalized roadmap to accelerate your revenue with AI</p>
+                    </div>
+                    <div class="cta-form">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Full Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Work Email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Company Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Phone Number" required>
+                                </div>
+                                <div class="col-12">
+                                    <select class="form-select" required>
+                                        <option value="">Company Size</option>
+                                        <option value="10-25">10-25 employees</option>
+                                        <option value="26-50">26-50 employees</option>
+                                        <option value="51-200">51-200 employees</option>
+                                        <option value="200+">200+ employees</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100">Schedule My Free Strategy Call</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Journey.ai</h5>
+                    <p class="mb-0">Transforming go-to-market teams with enterprise-grade AI solutions.</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Contact</h5>
+                    <p class="mb-0">Stephane Maes, Co-founder & CEO<br>
+                    +32 498 71 91 82</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white">LinkedIn</a>
+                        <a href="#" class="text-white">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <small>&copy; 2024 Journey.ai. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation classes on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .pricing-card, .section-title').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Form validation enhancement
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                console.log('Form submitted');
+            });
+        }
+    </script>
+</body>
+</html>
